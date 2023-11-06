@@ -30,7 +30,7 @@ dotfile-repo-root/
 
 Uses [GNU stow](https://www.gnu.org/software/stow/) to manage required symlinks from home directory to dotfile repo.
 
-Supplied `install.sh` script simply loops over all the top-level directories in dotfile root, running stow with the home-directory as it's `target`.
+Supplied `install.sh` script simply loops over all the top-level directories in dotfile root, running `stow` with the home-directory as it's `target`.
 
 - clone this repo
 - cd into clone
