@@ -1,0 +1,99 @@
+## to manually run:
+# $> brew bundle install
+
+## 'brew tap'
+# tap "homebrew/cask"
+# 'brew tap' with custom Git URL
+# tap "user/tap-repo", "https://user@bitbucket.org/user/homebrew-tap-repo.git"
+# set arguments for all 'brew install --cask' commands
+# cask_args appdir: "~/Applications", require_sha: true
+
+## 'brew install'
+# brew "imagemagick"
+# 'brew install --with-rmtp', 'brew services restart' on version changes
+# brew "denji/nginx/nginx-full", args: ["with-rmtp"], restart_service: :changed
+# 'brew install', always 'brew services restart', 'brew link', 'brew unlink mysql' (if it is installed)
+# brew "mysql@5.6", restart_service: true, link: true, conflicts_with: ["mysql"]
+
+## 'brew install --cask'
+# cask "google-chrome"
+# 'brew install --cask --appdir=~/my-apps/Applications'
+# cask "firefox", args: { appdir: "~/my-apps/Applications" }
+# 'brew install --cask' only if '/usr/libexec/java_home --failfast' fails
+# cask "java" unless system "/usr/libexec/java_home --failfast"
+
+## 'mas install'
+# mas "1Password", id: 443987910
+
+## 'whalebrew install'
+# whalebrew "whalebrew/wget"
+
+## begin
+
+## editors
+# let's start with the most important :)
+# emacs
+tap "railwaycat/emacsmacport"
+cask "emacs-mac"
+cask "multipass"
+
+# fonts
+tap "homebrew/cask-fonts"
+cask "font-hack-nerd-font"
+cask "font-fira-code"
+cask "font-fira-code-nerd-font"
+
+brew "aspell"
+brew "bash"
+brew "bash-completion"
+brew "bat"
+brew "borkdude/brew/babashka"
+brew "borkdude/brew/clj-kondo"
+brew "borkdude/brew/jet"
+brew "clojure"
+brew "clojure-lsp/brew/clojure-lsp-native"
+brew "cmake"
+brew "coreutils"
+brew "fd"
+brew "ffmpeg"
+brew "flac"
+brew "git"
+brew "golang-migrate"
+brew "gnupg"
+brew "gnutls"
+brew "graphviz"
+brew "htop"
+brew "hugo"
+brew "jq"
+brew "maven"
+brew "neovim"
+brew "node"
+brew "pwgen"
+brew "python3"
+brew "ripgrep"
+brew "sqlc"
+brew "stow"
+brew "tmux"
+brew "tree"
+brew "watch"
+brew "wget"
+
+# window management
+tap "koekeishiya/formulae"
+brew "koekeishiya/formulae/yabai"
+# keyboard hotkey
+brew "koekeishiya/formulae/skhd"
+
+brew "youtube-dl"
+
+cask "1password-cli"
+cask "audacity"
+cask "dbeaver-community"
+cask "google-chrome"
+cask "iterm2"
+cask "rectangle"
+cask "secretive"
+cask "spotify"
+cask "topnotch"
+cask "vlc"
+

@@ -1,0 +1,6 @@
+# we are versioning hidden dir .config
+!**/.config
+
+# Brew.lock.json does not seem to be well named 
+# https://github.com/Homebrew/homebrew-bundle/issues/1188
+**/Brewfile.lock.json
