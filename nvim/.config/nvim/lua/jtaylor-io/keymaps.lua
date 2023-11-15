@@ -115,8 +115,26 @@ vim.keymap.set("n", "<Leader><tab>", "<Cmd>lua require('telescope.builtin').comm
 vim.keymap.set("n", "<leader>tt", ":lua require('FTerm').toggle()<CR>", { noremap = true })
 vim.keymap.set("t", "<leader>tt", '<C-\\><C-n>:lua require("FTerm").toggle()<CR>', { noremap = true })
 
+-- Go
 vim.keymap.set("n", "<leader>ee", "<cmd>GoIfErr<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>gt", "<cmd>GoTestFunc -F<cr>", { silent = true, noremap = true })
 
 -- Git
 vim.keymap.set("n", "<leader>gc", ':Git commit -m "', { noremap = false })
 vim.keymap.set("n", "<leader>gp", ":Git push -u origin HEAD<CR>", { noremap = false })
+
+-- Copilot
+vim.g.copilot_no_tab_map = true
+vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+--  vim.g.copilot_filetypes = {
+--    ["*"] = false,
+--    ["javascript"] = true,
+--    ["typescript"] = true,
+--    ["lua"] = false,
+--    ["rust"] = true,
+--    ["c"] = true,
+--    ["c#"] = true,
+--    ["c++"] = true,
+--    ["go"] = true,
+--    ["python"] = true,
+--  }
