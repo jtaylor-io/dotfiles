@@ -127,13 +127,15 @@ return {
 				-- Replace the language servers listed here
 				-- with the ones you want to install
 				ensure_installed = {
-					"tsserver",
+					"clojure_lsp",
+					"cssls",
 					"eslint",
-					"lua_ls",
-					"rust_analyzer",
 					"gopls",
-					"pyright",
+					"lua_ls",
 					"marksman",
+					"pyright",
+					"rust_analyzer",
+					"tsserver",
 				},
 				handlers = {
 					lsp_zero.default_setup,
