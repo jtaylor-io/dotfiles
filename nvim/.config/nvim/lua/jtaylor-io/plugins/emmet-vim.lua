@@ -1,5 +1,0 @@
-return {
-	{
-		"mattn/emmet-vim",
-	},
-}

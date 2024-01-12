@@ -1,5 +1,0 @@
-return {
-	{
-		"xiyaowong/nvim-transparent",
-	},
-}
