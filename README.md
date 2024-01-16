@@ -1,4 +1,6 @@
-# dotfiles
+<img src="https://www.memecreator.org/static/images/memes/4838014.jpg"/>
+
+# JT's dotfiles
 
 ## Repo Structure [[inspiration](https://brandon.invergo.net/news/2011-05-26-using-gnu-stow-to-manage-your-dotfiles.html)]
 
