@@ -39,3 +39,7 @@ Supplied `install.sh` script simply loops over all the top-level directories in 
 - clone this repo
 - cd into clone
 - run `$> ./install.sh`
+
+### homebrew install
+
+- run `run $> cd && ./brew-install.sh`
