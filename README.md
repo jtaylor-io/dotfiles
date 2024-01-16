@@ -11,8 +11,9 @@ The layout of the configuration inside of each top-level directory needs to main
 ```
 home-directory/
     .bashrc
-    nvim/
-        init.lua
+    .config/
+        nvim/
+            init.lua
 ```
 
 - maps to this in `dotfile-repo-root`:
@@ -22,8 +23,9 @@ dotfile-repo-root/
     bash/
         .bashrc
     neovim/
-        nvim/
-            init.lua
+        .config/
+            nvim/
+                init.lua
 ```
 
 ## Installation
