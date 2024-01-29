@@ -3,7 +3,7 @@
 -- vim.keymap.set('n', '<c-j>', ':wincmd j<CR>')
 -- vim.keymap.set('n', '<c-h>', ':wincmd h<CR>')
 -- vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
--- 
+--
 -- vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 -- vim.wo.number = true
 
@@ -61,3 +61,5 @@ vim.opt.updatetime = 250
 -- https://www.reddit.com/r/ProgrammerHumor/comments/6s0wov/heaviest_objects_in_the_universe/)?
 vim.opt.wildignore:append({ "*/node_modules/*" })
 
+vim.opt.spelllang = "en_us"
+vim.opt.spell = true
