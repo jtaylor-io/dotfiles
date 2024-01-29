@@ -2,26 +2,31 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-textobjects",
+		},
 		config = function()
 			local config = require("nvim-treesitter.configs")
 			config.setup({
-				-- ensure_installed = {
-				--   "bash",
-				--   "c",
-				--   "go",
-				--   "javascript",
-				--   "lua",
-				--   "markdown",
-				--   "markdown_inline",
-				--   "org",
-				--   "query",
-				--   "regex",
-				--   "rust",
-				--   "sql",
-				--   "typescript",
-				--   "vim",
-				--   "vimdoc",
-				-- },
+				ensure_installed = {
+					"bash",
+					"c",
+					"clojure",
+					"go",
+					"javascript",
+					"lua",
+					"markdown",
+					"markdown_inline",
+					"org",
+					"python",
+					"query",
+					"regex",
+					"rust",
+					"sql",
+					"typescript",
+					"vim",
+					"vimdoc",
+				},
 				-- Install parsers synchronously (only applied to `ensure_installed`)
 				sync_install = false,
 
