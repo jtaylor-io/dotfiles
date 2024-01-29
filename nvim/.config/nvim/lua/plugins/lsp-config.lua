@@ -18,21 +18,74 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		lazy = false,
 		opts = {
-			auto_install = true,
+			-- auto_install = true,
+			ensure_installed = {
+				"clojure_lsp",
+				"cssls",
+				"eslint",
+				"gopls",
+				"jsonls",
+				"lua_ls",
+				"marksman",
+				"pyright",
+				"rust_analyzer",
+				"tailwindcss",
+				"tsserver",
+			},
 		},
 	},
 	{
 		"neovim/nvim-lspconfig",
 		lazy = false,
 		config = function()
+			local on_attach = function(_, bufnr)
+				local opts = { buffer = bufnr, remap = false }
+
+				vim.keymap.set("n", "gd", function()
+					vim.lsp.buf.definition()
+				end, opts)
+				vim.keymap.set("n", "K", function()
+					vim.lsp.buf.hover()
+				end, opts)
+				vim.keymap.set("n", "<leader>vws", function()
+					vim.lsp.buf.workspace_symbol()
+				end, opts)
+				vim.keymap.set("n", "<leader>vd", function()
+					vim.diagnostic.open_float()
+				end, opts)
+				vim.keymap.set("n", "[d", function()
+					vim.diagnostic.goto_next()
+				end, opts)
+				vim.keymap.set("n", "]d", function()
+					vim.diagnostic.goto_prev()
+				end, opts)
+				vim.keymap.set("n", "<leader>vca", function()
+					vim.lsp.buf.code_action()
+				end, opts)
+				vim.keymap.set("n", "<leader>vrr", function()
+					vim.lsp.buf.references()
+				end, opts)
+				vim.keymap.set("n", "<leader>vrn", function()
+					vim.lsp.buf.rename()
+				end, opts)
+				vim.keymap.set("i", "<C-h>", function()
+					vim.lsp.buf.signature_help()
+				end, opts)
+			end
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			local lspconfig = require("lspconfig")
 			local util = require("lspconfig/util")
 
+			-- clojure
+			lspconfig.clojure_lsp.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
 			-- go
 			lspconfig.gopls.setup({
 				capabilities = capabilities,
+				on_attach = on_attach,
 				cmd = { "gopls" },
 				filetypes = { "go", "gomod", "gowork", "gotmpl" },
 				root_dir = util.root_pattern("go.work", "go.mod", ".git"),
@@ -50,11 +103,13 @@ return {
 			-- html
 			lspconfig.html.setup({
 				capabilities = capabilities,
+				on_attach = on_attach,
 			})
 
 			-- lua
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
+				on_attach = on_attach,
 				settings = {
 					Lua = {
 						diagnostics = {
@@ -67,17 +122,19 @@ return {
 			-- python
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
+				on_attach = on_attach,
 			})
 
 			-- js, ts
 			lspconfig.tsserver.setup({
 				capabilities = capabilities,
+				on_attach = on_attach,
 			})
 
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+			-- vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+			-- vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+			-- vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
+			-- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 		end,
 	},
 }
