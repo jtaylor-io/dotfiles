@@ -20,8 +20,11 @@ return {
 		opts = {
 			-- auto_install = true,
 			ensure_installed = {
+				"bashls",
 				"clojure_lsp",
 				"cssls",
+				"dockerls",
+				"docker_compose_language_service",
 				"eslint",
 				"gopls",
 				"jsonls",
@@ -29,7 +32,10 @@ return {
 				"marksman",
 				"pyright",
 				"rust_analyzer",
+				"svelte",
+				-- "sqls",
 				"tailwindcss",
+				"terraformls",
 				"tsserver",
 			},
 		},
@@ -82,6 +88,19 @@ return {
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
+
+			-- docker
+			lspconfig.dockerls.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
+			-- docker compose
+			lspconfig.docker_compose_language_service.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
 			-- go
 			lspconfig.gopls.setup({
 				capabilities = capabilities,
@@ -119,13 +138,44 @@ return {
 				},
 			})
 
+			-- bash
+			lspconfig.bashls.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
 			-- python
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
 
-			-- js, ts
+			-- sql
+			-- lspconfig.sqls.setup({
+			-- 	on_attach = function(client, bufnr)
+			-- 		require("sqls").on_attach(client, bufnr)
+			-- 	end,
+			-- })
+
+			-- svelte
+			lspconfig.svelte.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
+			-- tailwind
+			lspconfig.tailwindcss.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
+			-- terraform
+			lspconfig.terraformls.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
+			-- ts, js
 			lspconfig.tsserver.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
