@@ -118,6 +118,7 @@ vim.keymap.set("t", "<leader>tt", '<C-\\><C-n>:lua require("FTerm").toggle()<CR>
 -- Go
 vim.keymap.set("n", "<leader>ee", "<cmd>GoIfErr<cr>", { silent = true, noremap = true })
 vim.keymap.set("n", "<leader>gt", "<cmd>GoTestFunc -v -F<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>gfs", "<cmd>GoFillStruct<cr>", { silent = true, noremap = true })
 
 -- Git
 vim.keymap.set("n", "<leader>gc", ':Git commit -m "', { noremap = false })
