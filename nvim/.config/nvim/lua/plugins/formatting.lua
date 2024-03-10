@@ -20,6 +20,7 @@ return {
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				go = { "gofumpt", "golines", "goimports_reviser" },
+				terraform = { "terraform_fmt" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
@@ -37,4 +38,3 @@ return {
 		end, { desc = "Format file or range (in visual mode)" })
 	end,
 }
-
