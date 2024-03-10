@@ -1,7 +1,7 @@
 return {
-  {
-    "nvim-telescope/telescope-ui-select.nvim",
-  },
+	{
+		"nvim-telescope/telescope-ui-select.nvim",
+	},
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
 		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
@@ -23,18 +23,18 @@ return {
 		},
 
 		config = function()
-      local telescope = require("telescope")
-      telescope.load_extension("ui-select")
+			local telescope = require("telescope")
+			telescope.load_extension("ui-select")
 			telescope.load_extension("harpoon")
 			-- require("telescope").load_extension("git_worktree")
 			-- [[ Configure Telescope ]]
 			-- See `:help telescope` and `:help telescope.setup()`
 			telescope.setup({
-        extensions = {
-          ["ui-select"] = {
-            require("telescope.themes").get_dropdown({}),
-          },
-        },
+				extensions = {
+					["ui-select"] = {
+						require("telescope.themes").get_dropdown({}),
+					},
+				},
 				defaults = {
 					mappings = {
 						i = {
@@ -61,6 +61,12 @@ return {
 			end, { desc = "[/] Fuzzily search in current buffer]" })
 
 			vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
+			vim.keymap.set(
+				"n",
+				"<leader>fh",
+				":lua require'telescope.builtin'.find_files({ hidden = true })<CR>",
+				{ desc = "[F]iles [H]idden" }
+			)
 			vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 			vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
 			vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
