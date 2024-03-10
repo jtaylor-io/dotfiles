@@ -85,6 +85,7 @@ return {
 				},
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
+					{ name = "conjure" },
 					{ name = "luasnip" },
 					{ name = "orgmode" },
 					{ name = "nvim_lsp_signature_help" },
