@@ -10,6 +10,8 @@ return {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-vsnip",
+			"PaterJason/cmp-conjure",
 		},
 	},
 	{
@@ -45,7 +47,10 @@ return {
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.abort(),
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<CR>"] = cmp.mapping.confirm({
+						behavior = cmp.ConfirmBehavior.Insert,
+						select = true,
+					}),
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
@@ -86,11 +91,11 @@ return {
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
 					{ name = "conjure" },
+					{ name = "buffer" },
 					{ name = "luasnip" },
 					{ name = "orgmode" },
 					{ name = "nvim_lsp_signature_help" },
 				}, {
-					{ name = "buffer" },
 					{ name = "path" },
 				}),
 			})
