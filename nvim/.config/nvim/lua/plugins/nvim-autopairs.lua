@@ -15,6 +15,6 @@ return {
 			highlight = "Search",
 			highlight_grey = "Comment",
 		},
+		enable_check_bracket_line = false,
 	}, -- this is equivalent to setup({}) function
 }
-
