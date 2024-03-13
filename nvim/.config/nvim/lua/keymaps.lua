@@ -139,3 +139,13 @@ vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true,
 --    ["go"] = true,
 --    ["python"] = true,
 --  }
+
+-- Conjure
+vim.api.nvim_create_autocmd("BufNewFile", {
+	group = vim.api.nvim_create_augroup("conjure_log_disable_lsp", { clear = true }),
+	pattern = { "conjure-log-*" },
+	callback = function()
+		vim.diagnostic.disable(0)
+	end,
+	desc = "Conjure Log disable LSP diagnostics",
+})
