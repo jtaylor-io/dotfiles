@@ -6,7 +6,9 @@ return {
 		config = function()
 			local paredit = require("nvim-paredit")
 			return paredit.setup({
-				["<localleader>oo"] = { paredit.api.raise_form, "Raise form" },
+				keys = {
+					["<localleader>oo"] = { paredit.api.raise_form, "Raise form" },
+				},
 			})
 		end,
 	},
