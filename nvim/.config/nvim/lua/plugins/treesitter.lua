@@ -13,7 +13,10 @@ return {
 					"c",
 					"clojure",
 					"go",
+					"html",
+					"java",
 					"javascript",
+					"json",
 					"lua",
 					"markdown",
 					"markdown_inline",
@@ -26,6 +29,7 @@ return {
 					"typescript",
 					"vim",
 					"vimdoc",
+					"yaml",
 				},
 				-- Install parsers synchronously (only applied to `ensure_installed`)
 				sync_install = false,

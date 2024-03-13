@@ -29,10 +29,10 @@ return {
 			-- Diagnostic signs
 			-- https://github.com/folke/trouble.nvim/issues/52
 			local signs = {
-				Error = " ",
-				Warning = " ",
-				Hint = " ",
-				Information = " ",
+				Error = "\239\129\151", --" ",
+				Warning = "\239\129\177", -- " ",
+				Information = "\239\129\154", -- " ",
+				Hint = "\239\129\153", --" ",
 			}
 			for type, icon in pairs(signs) do
 				local hl = "DiagnosticSign" .. type
@@ -41,4 +41,3 @@ return {
 		end,
 	},
 }
-

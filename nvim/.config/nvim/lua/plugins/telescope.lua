@@ -1,5 +1,8 @@
 return {
 	{
+		"nvim-lua/popup.nvim",
+	},
+	{
 		"nvim-telescope/telescope-ui-select.nvim",
 	},
 	{
@@ -10,12 +13,20 @@ return {
 		"nvim-telescope/telescope-symbols.nvim",
 	},
 	{
+		"ThePrimeagen/git-worktree.nvim",
+	},
+	{
 		"nvim-telescope/telescope.nvim",
 
 		tag = "0.1.5",
 
 		dependencies = {
-			{ "nvim-lua/plenary.nvim" },
+			{
+				"nvim-telescope/telescope-ui-select.nvim",
+				"nvim-lua/popup.nvim",
+				"nvim-lua/plenary.nvim",
+				"ThePrimeagen/git-worktree.nvim",
+			},
 		},
 
 		defaults = {
@@ -26,7 +37,7 @@ return {
 			local telescope = require("telescope")
 			telescope.load_extension("ui-select")
 			telescope.load_extension("harpoon")
-			-- require("telescope").load_extension("git_worktree")
+			require("telescope").load_extension("git_worktree")
 			-- [[ Configure Telescope ]]
 			-- See `:help telescope` and `:help telescope.setup()`
 			telescope.setup({
@@ -36,6 +47,19 @@ return {
 					},
 				},
 				defaults = {
+					file_ignore_patterns = { "node_modules" },
+					vimgrep_arguments = {
+						"rg",
+						"--color=never",
+						"--no-heading",
+						"--with-filename",
+						"--line-number",
+						"--column",
+						"--smart-case",
+						"--iglob",
+						"!.git",
+						"--hidden",
+					},
 					mappings = {
 						i = {
 							["<C-u>"] = false,
@@ -45,6 +69,7 @@ return {
 						},
 					},
 				},
+				pickers = { find_files = { find_command = { "rg", "--files", "--iglob", "!.git", "--hidden" } } },
 			})
 			-- Enable telescope fzf native, if installed
 			pcall(telescope.load_extension, "fzf")
@@ -60,20 +85,22 @@ return {
 				}))
 			end, { desc = "[/] Fuzzily search in current buffer]" })
 
-			vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
+			vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "[F]ind [F]iles" })
 			vim.keymap.set(
 				"n",
 				"<leader>fh",
 				":lua require'telescope.builtin'.find_files({ hidden = true })<CR>",
 				{ desc = "[F]iles [H]idden" }
 			)
-			vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
-			vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-			vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
-			vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
-			vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[ ] Find existing buffers" })
-			vim.keymap.set("n", "<leader>sS", builtin.git_status, { desc = "" })
-			vim.keymap.set("n", "<leader>sm", ":Telescope harpoon marks<CR>", { desc = "Harpoon [M]arks" })
+			vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "[F]iles[S]earch [H]elp" })
+			vim.keymap.set("n", "<leader>fw", builtin.grep_string, { desc = "[F]iles[S]earch current [W]ord" })
+			vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "[F]iles[S]earch by [G]rep" })
+			vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "[F]iles[S]earch [D]iagnostics" })
+			vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "[F]ind existing [B]uffers" })
+			vim.keymap.set("n", "<leader>fS", builtin.git_status, { desc = "[F]ind git [S]tatus" })
+			vim.keymap.set("n", "<leader>fr", builtin.lsp_references, { desc = "[F]ind [R]eferences" })
+			vim.keymap.set("n", "<leader>fi", builtin.lsp_implementations, { desc = "[F]ind [I]mplementations" })
+			vim.keymap.set("n", "<leader>fm", ":Telescope harpoon marks<CR>", { desc = "[F]ind Harpoon [M]arks" })
 			vim.keymap.set(
 				"n",
 				"<Leader>sr",
