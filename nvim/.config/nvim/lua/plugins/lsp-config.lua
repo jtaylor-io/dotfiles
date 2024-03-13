@@ -181,6 +181,12 @@ return {
 				on_attach = on_attach,
 			})
 
+			-- marksman
+			lspconfig.marksman.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
 			-- python
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
