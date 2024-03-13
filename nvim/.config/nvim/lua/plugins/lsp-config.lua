@@ -44,11 +44,34 @@ return {
 		"neovim/nvim-lspconfig",
 		lazy = false,
 		config = function()
+			local handlers = {
+				["textDocument/publishDiagnostics"] = vim.lsp.with(
+					vim.lsp.diagnostic.on_publish_diagnostics,
+					{ severity_sort = true, update_in_insert = true, underline = true, virtual_text = false }
+				),
+				["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),
+				["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
+			}
+
 			local on_attach = function(_, bufnr)
 				local opts = { buffer = bufnr, remap = false }
-
 				vim.keymap.set("n", "gd", function()
 					vim.lsp.buf.definition()
+				end, opts)
+				vim.keymap.set("n", "<leader>ld", function()
+					vim.lsp.buf.declaration()
+				end, opts)
+				vim.keymap.set("n", "<leader>lt", function()
+					vim.lsp.buf.type_definition()
+				end, opts)
+				vim.keymap.set("n", "<leader>lh", function()
+					vim.lsp.buf.signature_help()
+				end, opts)
+				vim.keymap.set("n", "<leader>lq", function()
+					vim.diagnostics.setloclist()
+				end, opts)
+				vim.keymap.set("n", "<leader>lf", function()
+					vim.lsp.buf.format()
 				end, opts)
 				vim.keymap.set("n", "K", function()
 					vim.lsp.buf.hover()
@@ -77,28 +100,42 @@ return {
 				vim.keymap.set("i", "<C-h>", function()
 					vim.lsp.buf.signature_help()
 				end, opts)
+				vim.keymap.set("v", "<leader>rc<leader>rca", function()
+					vim.lsp.buf.range_code_action()
+				end, opts)
 			end
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			local lspconfig = require("lspconfig")
 			local util = require("lspconfig/util")
 
+			local before_init = function(params)
+				params.workDoneToken = "1"
+				return nil
+			end
+
 			-- clojure
 			lspconfig.clojure_lsp.setup({
-				capabilities = capabilities,
 				on_attach = on_attach,
+				handlers = handlers,
+				before_init = before_init,
+				capabilities = capabilities,
 			})
 
 			-- docker
 			lspconfig.dockerls.setup({
-				capabilities = capabilities,
 				on_attach = on_attach,
+				handlers = handlers,
+				before_init = before_init,
+				capabilities = capabilities,
 			})
 
 			-- docker compose
 			lspconfig.docker_compose_language_service.setup({
-				capabilities = capabilities,
 				on_attach = on_attach,
+				handlers = handlers,
+				before_init = before_init,
+				capabilities = capabilities,
 			})
 
 			-- go
