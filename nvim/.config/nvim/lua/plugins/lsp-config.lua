@@ -26,6 +26,7 @@ return {
 				"dockerls",
 				"docker_compose_language_service",
 				"eslint",
+				"html",
 				"gopls",
 				"jsonls",
 				"lua_ls",
@@ -100,9 +101,9 @@ return {
 				vim.keymap.set("i", "<C-h>", function()
 					vim.lsp.buf.signature_help()
 				end, opts)
-				vim.keymap.set("v", "<leader>rc<leader>rca", function()
-					vim.lsp.buf.range_code_action()
-				end, opts)
+				-- vim.keymap.set("v", "", function()
+				-- 	vim.lsp.buf.range_code_action()
+				-- end, opts)
 			end
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
