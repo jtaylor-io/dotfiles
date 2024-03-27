@@ -93,10 +93,6 @@ vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- Undo
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
--- Harpoon
-vim.keymap.set("n", "<leader>m", ":lua require('harpoon.mark').add_file()<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>ht", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", { noremap = true })
-
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
